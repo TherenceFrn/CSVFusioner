@@ -1,4 +1,3 @@
-This repo demonstrates how to receive a CSV file using HTML `<input>` element and parse the content as a JavaScript `array`.
+# CSV Fusioner
 
-Full tutorial link: 
-[JavaScript - Parse CSV data into an array](https://sebhastian.com/javascript-csv-to-array/)
+Made using [https://github.com/nsebhastian/javascript-csv-array-example](https://github.com/nsebhastian/javascript-csv-array-example) and [https://www.codegrepper.com/code-examples/javascript/javascript+create+text+file+and+download](https://www.codegrepper.com/code-examples/javascript/javascript+create+text+file+and+download)
