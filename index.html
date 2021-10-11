@@ -1,0 +1,65 @@
+<head>
+  <title>CSV Fusioner</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <!-- <form id="myForm">
+    <input type="file" id="csvFile" accept=".csv" />
+    <br />
+    <input type="submit" value="Submit" />
+  </form> -->
+
+  <div class="container">
+    <h1>CSV Fusioner</h1>
+      <form id="myForm">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Fichier CSV</label>
+          <input type="file" class="form-control" id="csvFile" aria-describedby="emailHelp" value="Fichier CSV">
+          <small id="emailHelp" class="form-text text-muted">Cliquez sur le bouton pour mettre le fichier CSV</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Nom du TXT</label>
+          <input type="text" class="form-control" id="csvTitle" placeholder="Nom du fichier">
+        </div>
+      <button type="submit" class="btn btn-primary">Télecharger</button>
+    </form>
+  </div>
+
+  <script>
+    const myForm = document.getElementById("myForm");
+    const csvFile = document.getElementById("csvFile");
+
+    function formate(content) {
+      return content.replace(/;/g, " ");
+    }
+
+    myForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const input = csvFile.files[0];
+      const reader = new FileReader();
+
+      let csvTitle = document.getElementById("csvTitle").value == "" ? 'csv' : document.getElementById("csvTitle").value;
+
+      reader.onload = function (e) {
+        const text = e.target.result;
+        download(`${csvTitle}.txt`,`${formate(text)}`);
+      };
+      reader.readAsText(input);
+    });
+
+
+    function download(filename, text) {
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      element.setAttribute('download', filename);
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
+    }
+
+  </script>
+</body>
